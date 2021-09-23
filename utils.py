@@ -53,3 +53,7 @@ class CustomDataset(Dataset):
 def load_data(dataset_path, num_workers=0, batch_size=128):
     dataset = CustomDataset(dataset_path)
     return DataLoader(dataset, num_workers=num_workers, batch_size=batch_size, shuffle=True, drop_last=False)
+
+def accuracy(outputs, labels):
+    outputs_idx = outputs.max(1)[1].type_as(labels)
+    return outputs_idx.eq(labels).float().mean()
