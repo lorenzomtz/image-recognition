@@ -42,10 +42,12 @@ class CustomDataset(Dataset):
                 self.labels.append((trans(image), label))
 
     def __len__(self):
+
         # return length of (image, label) list
         return len(self.labels)
 
     def __getitem__(self, idx):
+        
         # return (image, label) pair at specified index
         return self.labels[idx]
 
